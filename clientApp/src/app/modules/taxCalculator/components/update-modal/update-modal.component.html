@@ -1,0 +1,28 @@
+
+
+<div class="container p-5">
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" *ngIf="employee">
+              <h1 class="modal-title fs-5" id="staticBackdropLabel">Current Value &nbsp;  {{ employee.grossAnnualSalary | currency: employee.currency:'symbol':'1.2-2' }}</h1>
+              <form (ngSubmit)="submitForm(employee.grossAnnualSalary)" class="bg-white rounded shadow-5-strong p-5">
+                <!-- Email input -->
+                <div class="form-outline mb-4" data-mdb-input-init>
+                  <input type="number" id="salary" [(ngModel)]="employee.grossAnnualSalary" name="grossAnnualSalary" required class="form-control" />
+
+                  <button class="btn btn-success mt-3" [disabled]="employee.grossAnnualSalary < 1 || employee.grossAnnualSalary > 5000000" (click)="submitForm(employee.grossAnnualSalary)">Save</button>
+                  <button class="btn btn-secondary mt-3 ms-3" type="button" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+                  <div *ngIf="employee.grossAnnualSalary < 1 || employee.grossAnnualSalary > 5000000">
+                    <p class="lead text-danger" *ngIf="employee.grossAnnualSalary < 1">Salary must be greater than or equal to 1.</p>
+                    <p class="lead text-danger" *ngIf="employee.grossAnnualSalary > 5000000">Salary must be less than or equal to 5,000,000.</p>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>

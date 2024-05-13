@@ -1,0 +1,21 @@
+<div class="container p-5">
+    <div class="row justify-content-center">
+      <div class="col-xl-5 col-md-8">
+        <form [formGroup]="loginForm" (ngSubmit)="submitForm()" class="bg-white rounded shadow-5-strong p-5">
+          <!-- Email input -->
+          <div class="form-label mb-4" data-mdb-input-init>
+            <input type="email" id="loginFormEmailInput" formControlName="email" required class="form-control" />
+            <label class="form-label" for="loginFormEmailInput">Email address</label>
+          </div>
+
+          <!-- Password input -->
+          <div class="form-label mb-4" data-mdb-input-init>
+            <input type="password" id="loginFormPasswordInput" formControlName="password" required class="form-control" />
+            <label class="form-label" for="loginFormPasswordInput">Password</label>
+          </div>
+          <!-- Submit button -->
+          <button [disabled]="!loginForm.valid" type="submit" class="btn btn-primary btn-block">Sign in</button>
+        </form>
+      </div>
+    </div>
+  </div>

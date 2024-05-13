@@ -1,0 +1,55 @@
+/* Styles for Employee Details Page */
+
+.employee-details-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 4rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .page-title {
+    font-size: 24px;
+    color: #333;
+    align-items: center;
+  }
+  
+  .employee-info {
+    margin-bottom: 20px;
+  }
+  
+  .employee-info p {
+    margin: 5px 0;
+  }
+  
+  .action-buttons {
+    margin-bottom: 20px;
+  }
+  
+  .action-buttons .btn {
+    margin-right: 10px;
+  }
+  
+  .tax-breakdown-details p {
+    margin: 5px 0;
+  }
+  
+  /* Responsive Styling */
+  
+  @media only screen and (max-width: 600px) {
+    .employee-details-container {
+      padding: 10px;
+    }
+  
+    .page-title {
+      font-size: 20px;
+    }
+  }
+  
+  @media only screen and (max-width: 400px) {
+    .employee-details-container {
+      max-width: 90%;
+    }
+  }
+  

@@ -1,0 +1,54 @@
+<div class="container pt-4">
+  <div class="row justify-content-center">
+    <div class="col-12">
+      <div class="input-group mb-3">
+        <input #searchInput type="text" class="form-control" placeholder="Search employees..." (input)="setupSearchInput()">
+        <button class="btn btn-outline-secondary" type="button" (click)="clearSearch()">Clear</button>
+      </div>
+      
+      <div class="card shadow-2-strong" style="background-color: #f5f7fa;">
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-striped mb-0">
+              <thead>
+                <tr>
+                  <th scope="col" class="text-center"><strong>First Name</strong></th>
+                  <th scope="col" class="text-center"><strong>Last Name</strong></th>
+                  <th scope="col" class="text-center"><strong>Annual Salary</strong></th>
+                  <th scope="col" class="text-center"><strong>Actions</strong></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let employee of displayedEmployees; let i = index">
+                  <td class="text-center">{{ employee.firstName }}</td>
+                  <td class="text-center">{{ employee.lastName }}</td>
+                  <td class="text-center">{{ employee.grossAnnualSalary| currency:employee.currency:'symbol':'1.2-2' }}</td>
+                  <td class="text-center">
+                    <!-- Button trigger modal -->
+                    <button type="button" (click)="selectEmployee(employee)" class="btn btn-primary">
+                      View Tax Breakdown
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- Pagination controls -->
+          <nav aria-label="Page navigation ">
+            <ul class="pagination justify-content-center pt-3">
+              <li class="page-item" [class.disabled]="currentPage === 1">
+                <button class="page-link" (click)="prevPage()">Previous</button>
+              </li>
+              <li class="page-item" *ngFor="let page of totalPages" [class.active]="page === currentPage">
+                <button class="page-link" (click)="goToPage(page)">{{ page }}</button>
+              </li>
+              <li class="page-item" [class.disabled]="currentPage === totalPages.length">
+                <button class="page-link" (click)="nextPage()">Next</button>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

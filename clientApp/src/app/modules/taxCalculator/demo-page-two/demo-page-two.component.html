@@ -1,0 +1,49 @@
+<app-navbar />
+<!-- Employee Details Page -->
+<div class="container mt-5">
+    <h3>{{ employee.firstName }} &nbsp; {{ employee.lastName }}</h3>
+    <!-- Employee Information -->
+    <div class="employee-info"><i class="fa-solid fa-pen-to-square"></i>
+      <p class="fs-5"><strong>Gross Annual Salary:</strong> &nbsp; {{ employee.grossAnnualSalary | currency:employee.currency:'symbol':'1.2-2' }}
+        <span> &nbsp; 
+          <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+            <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"/>
+          </svg>
+          </button>
+        </span>
+      </p> 
+    </div>
+    
+    <hr />   
+
+    <!-- Tax Breakdown Details -->
+    <div class="tax-breakdown-details" *ngIf="calculatedWithTaxPayouts.payouts.welfare > 0">
+      <div class="modal-body" *ngIf="calculatedWithTaxPayouts.payouts.welfare > 0"
+        >
+
+          <p class="fs-5"><strong>Welfare: </strong> &nbsp; {{ calculatedWithTaxPayouts.payouts.welfare | currency:employee.currency:'symbol':'1.2-2'  }}</p>
+          <p class="fs-5"><strong>Health: </strong> &nbsp; {{ calculatedWithTaxPayouts.payouts.health | currency:employee.currency:'symbol':'1.2-2'  }}</p>
+          <p class="fs-5"><strong>State Pensions: </strong> &nbsp; {{ calculatedWithTaxPayouts.payouts.statePensions | currency:employee.currency:'symbol':'1.2-2'  }}</p>
+          <p class="fs-5"><strong>Education: </strong> &nbsp; {{ calculatedWithTaxPayouts.payouts.education  | currency:employee.currency:'symbol':'1.2-2' }}</p>
+          <p class="fs-5"><strong>National Debt Interest: </strong> &nbsp; {{ calculatedWithTaxPayouts.payouts.nationalDebtInterest  | currency:employee.currency:'symbol':'1.2-2' }}</p>
+          <p class="fs-5"><strong>Defence: </strong> &nbsp; {{ calculatedWithTaxPayouts.payouts.defence | currency:employee.currency:'symbol':'1.2-2'  }}</p>
+          <p class="fs-5"><strong>Public Order & Safety: </strong> &nbsp; {{ calculatedWithTaxPayouts.payouts.publicOrderSafety  | currency:employee.currency:'symbol':'1.2-2' }}</p>
+          <p class="fs-5"><strong>Business & Industry: </strong> &nbsp; {{ calculatedWithTaxPayouts.payouts.businessAndIndustry  | currency:employee.currency:'symbol':'1.2-2' }}</p>
+          <p class="fs-5"><strong>Government Administration: </strong> &nbsp; {{ calculatedWithTaxPayouts.payouts.govAdmin  | currency:employee.currency:'symbol':'1.2-2' }}</p>
+          <p class="fs-5"><strong>Culture: </strong> &nbsp; {{ calculatedWithTaxPayouts.payouts.culture  | currency: employee.currency:'symbol':'1.2-2' }}</p>
+          <p class="fs-5"><strong>Environment: </strong> &nbsp; {{ calculatedWithTaxPayouts.payouts.environment  | currency:employee.currency:'symbol':'1.2-2' }}</p>
+          <p class="fs-5"><strong>Housing & Utilities: </strong> &nbsp; {{ calculatedWithTaxPayouts.payouts.houseAndUtilities  | currency:employee.currency:'symbol':'1.2-2' }}</p>
+          <p class="fs-5"><strong>Aid to Overseas: </strong> &nbsp; {{ calculatedWithTaxPayouts.payouts.overseasAid  | currency:employee.currency:'symbol':'1.2-2' }}</p>
+          <p class="fs-5"><strong>Last Updated: </strong> &nbsp; {{ calculatedWithTaxPayouts.payouts.lastModifiedOnDate }}</p>
+          
+        </div>
+
+      <!-- Add more details here -->
+    </div>
+  </div>
+  
+
+  <app-update-modal
+  [employee]="employee"
+  ></app-update-modal>

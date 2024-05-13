@@ -1,0 +1,20 @@
+export interface TaxPayouts {
+    "welfare": number,
+    "health": number,
+    "statePensions": number,
+    "education": number,
+    "nationalDebtInterest": number,
+    "defence": number,
+    "publicOrderSafety": number,
+    "transport": number,
+    "businessAndIndustry": number,
+    "govAdmin": number,
+    "culture": number,
+    "environment": number,
+    "houseAndUtilities": number,
+    "overseasAid": number,
+    "currency": string,
+    "id": number, 
+    "lastModifiedOnDate": string,
+    "lastModifiedByUser": string
+}
